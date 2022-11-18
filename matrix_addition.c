@@ -21,8 +21,8 @@ int main(){
         matrix_B[i] = (int*)malloc(columns*sizeof(int));
         matrix_C[i] = (int*)malloc(columns*sizeof(int));
         for(int j = 0; j<columns; j++){
-            matrix_A[i][j] = rand()%100;
-            matrix_B[i][j] = rand()%100;
+            matrix_A[i][j] = rand()%99 + 1;
+            matrix_B[i][j] = rand()%99 + 1;
         }
     }
     printf("Matrices initialized!\n");
