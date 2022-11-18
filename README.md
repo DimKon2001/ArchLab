@@ -36,3 +36,6 @@
   * [TimingSimpleCPU](https://www.gem5.org/documentation/general_docs/cpu_models/SimpleCPU#timingsimplecpu):
 Και αυτή κληρονομεί από την BaseSimple και υλοποιεί τις ίδιες συναρτήσεις με την AtomicSimple. Η διαφορά είναι ότι κάνει timing memory accesses, δηλαδή περιμένει το αποτέλεσμα της cache και δίνει μια πιο ρεαλιστική προσέγγιση του memory access time.
 3. 1.
+
+
+H TimingSimpleCPU ήταν πιο αργή σαν gem5 πρόγραμμα, καθώς η simulated CPU δεν έχει pipeline και για αυτό κάνει stall σε κάθε memory access (στους πίνακες υπάρχουν εκατοντάδες memory accesses) περιμένοντας το αποτέλεσμα, ενώ για τον ίδιο λόγο απαιτείται η προσομοίωση λιγότερων παραγόντων, άρα η προσομοίωση είχε μικρότερη χρονική διάρκεια.
