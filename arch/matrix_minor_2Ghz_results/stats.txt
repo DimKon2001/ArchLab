@@ -23,7 +23,7 @@ system.cpu.branchPred.indirectLookups            4905                       # Nu
 system.cpu.branchPred.indirectMisses             1882                       # Number of indirect misses.
 system.cpu.branchPred.lookups                   61672                       # Number of BP lookups
 system.cpu.branchPred.usedRAS                    6398                       # Number of times the RAS was used to get a target.
-system.cpu.branchPredindirectMispredicted          125                       # Number of mispredicted indirect branches.
+system.cpu.branchPredindirectMispredicted         125                       # Number of mispredicted indirect branches.
 system.cpu.committedInsts                      297245                       # Number of instructions committed
 system.cpu.committedOps                        347966                       # Number of ops (including micro ops) committed
 system.cpu.cpi                               1.827540                       # CPI: cycles per instruction
