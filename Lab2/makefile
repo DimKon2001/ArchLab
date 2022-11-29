@@ -28,6 +28,8 @@ CLOCK = 2GHz
 
 FILE_ENDING=$(CLOCK)
 #FILE_ENDING=$(CLOCK)_$(RAM)
+
+FLAGS=--cpu-clock=$(CLOCK)
 #=================================================================#
 
 OUT_DIR = spec_results/specbzip_$(FILE_ENDING) spec_results/specmcf_$(FILE_ENDING) spec_results/spechmmer_$(FILE_ENDING) spec_results/specsjeng_$(FILE_ENDING) spec_results/speclibm_$(FILE_ENDING) 
@@ -45,19 +47,19 @@ specsjeng: spec_results/specsjeng_$(FILE_ENDING)
 speclibm: spec_results/speclibm_$(FILE_ENDING)
 
 spec_results/specbzip_$(FILE_ENDING):
-	$(GEM5) -d $@ $(CONFIG) $(PARAM) --cpu-clock=$(CLOCK) -c spec_cpu2006/401.bzip2/src/specbzip -o $(DATA_ZIP) $(INST)
+	$(GEM5) -d $@ $(CONFIG) $(PARAM) $(FLAGS) -c spec_cpu2006/401.bzip2/src/specbzip -o $(DATA_ZIP) $(INST)
 
 spec_results/specmcf_$(FILE_ENDING):
-	$(GEM5) -d $@ $(CONFIG) $(PARAM) --cpu-clock=$(CLOCK) -c spec_cpu2006/429.mcf/src/specmcf -o $(DATA_MCF) $(INST)
+	$(GEM5) -d $@ $(CONFIG) $(PARAM) $(FLAGS) -c spec_cpu2006/429.mcf/src/specmcf -o $(DATA_MCF) $(INST)
 
 spec_results/spechmmer_$(FILE_ENDING):
-	$(GEM5) -d $@ $(CONFIG) $(PARAM) --cpu-clock=$(CLOCK) -c spec_cpu2006/456.hmmer/src/spechmmer -o $(DATA_HMMER) $(INST)
+	$(GEM5) -d $@ $(CONFIG) $(PARAM) $(FLAGS) -c spec_cpu2006/456.hmmer/src/spechmmer -o $(DATA_HMMER) $(INST)
 
 spec_results/specsjeng_$(FILE_ENDING):
-	$(GEM5) -d $@ $(CONFIG) $(PARAM) --cpu-clock=$(CLOCK) -c spec_cpu2006/458.sjeng/src/specsjeng -o $(DATA_SJENG) $(INST)
+	$(GEM5) -d $@ $(CONFIG) $(PARAM) $(FLAGS) -c spec_cpu2006/458.sjeng/src/specsjeng -o $(DATA_SJENG) $(INST)
 
 spec_results/speclibm_$(FILE_ENDING):
-	$(GEM5) -d $@ $(CONFIG) $(PARAM) --cpu-clock=$(CLOCK) -c spec_cpu2006/470.lbm/src/speclibm -o $(DATA_LBM) $(INST)
+	$(GEM5) -d $@ $(CONFIG) $(PARAM) $(FLAGS) -c spec_cpu2006/470.lbm/src/speclibm -o $(DATA_LBM) $(INST)
 
 .PHONY: specbzip specmcf spechmmer specsjeng speclibm purge clean_specbzip_last clean_specmcf_last clean_specsjeng_last clean_speclibm_last clean_specbzip clean_specmcf clean_specsjeng clean_speclibm
 
