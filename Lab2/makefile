@@ -69,19 +69,23 @@ purge: $(OUT_DIR)
 
 clean_specbzip_last:
 	rm -rf spec_results/specbzip_$(FILE_ENDING)
+	rmdir spec_results/specbzip_$(FILE_ENDING)
 
 clean_specmcf_last:
 	rm -rf spec_results/specmcf_$(FILE_ENDING)
+	rmdir spec_results/specbzip_$(FILE_ENDING)
 
 clean_spechmmer_last:
 	rm -rf spec_results/spechmmer_$(FILE_ENDING)
+	rmdir spec_results/specbzip_$(FILE_ENDING)
 
 clean_specsjeng_last:
 	rm -rf spec_results/specsjeng_$(FILE_ENDING)
+	rmdir spec_results/specbzip_$(FILE_ENDING)
 
 clean_speclibm_last:
 	rm -rf spec_results/speclibm_$(FILE_ENDING)
-
+	rmdir spec_results/specbzip_$(FILE_ENDING)
 
 clean_specbzip:
 	rm -rf spec_results/specbzip_*
