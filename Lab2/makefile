@@ -16,7 +16,7 @@ DATA_ZIP =  "spec_cpu2006/401.bzip2/data/input.program 10"
 DATA_MCF = "spec_cpu2006/429.mcf/data/inp.in" 
 DATA_HMMER = "--fixed 0 --mean 325 --num 45000 --sd 200 --seed0spec_cpu2006/456.hmmer/data/bombesin.hmm"
 DATA_SJENG = "spec_cpu2006/458.sjeng/data/test.txt"
-DATA_LBM = "20spec_cpu2006/470.lbm/data/lbm.in 0 1spec_cpu2006/470.lbm/data/100_100_130_cf_a.of" 
+DATA_LBM = "20 spec_cpu2006/470.lbm/data/lbm.in 0 1 spec_cpu2006/470.lbm/data/100_100_130_cf_a.of" 
 
 #===================HERE WE CHANGE THE VALUES=====================#
 #Change this value to test different clock frequencies, RAM, ...
