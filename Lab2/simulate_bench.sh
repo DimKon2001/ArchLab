@@ -34,6 +34,8 @@ make spechmmer SIZE_L2=1MB FILE_ENDING=L2_S_1
 make spechmmer CACHE_LINE_SIZE=32 FILE_ENDING=LS_32
 make spechmmer CACHE_LINE_SIZE=128 FILE_ENDING=LS_128
 
+
+#Using the read_results.sh file create a txt file with the desired output
 echo "[Benchmarks]" > spec_results/data.ini
 
 find  spec_results/ -name "spechmmer*" |cat  >> spec_results/data.ini
