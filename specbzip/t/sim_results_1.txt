@@ -1,0 +1,16 @@
+Benchmarks	system.cpu.cpi	sim_seconds	host_seconds	system.cpu.dcache.overall_miss_rate::total	system.cpu.icache.overall_miss_rate::total	system.l2.overall_miss_rate::total
+spec_results/specbzip_L2_S_2_L2_A_2	1.625099	0.081255	282.57	0.009068	0.000067	0.300075
+spec_results/specbzip_L2_S_1_L2_A_1	1.681008	0.084050	272.75	0.009068	0.000067	0.419381
+spec_results/specbzip_L2_S_4_L2_A_1	1.602512	0.080126	265.81	0.009062	0.000067	0.259208
+spec_results/specbzip_L2_S_1_L2_A_8	1.641576	0.082079	269.39	0.009071	0.000067	0.333352
+spec_results/specbzip_L2_S_2_L2_A_1	1.640652	0.082033	274.35	0.009069	0.000067	0.327909
+spec_results/specbzip_L2_S_2_L2_A_16	1.618032	0.080902	282.60	0.009068	0.000067	0.284324
+spec_results/specbzip_L2_S_1_L2_A_2	1.650592	0.082530	278.85	0.009070	0.000067	0.359686
+spec_results/specbzip_L2_S_4_L2_A_2	1.600258	0.080013	272.82	0.009050	0.000067	0.253120
+spec_results/specbzip_L2_S_4_L2_A_4	1.599761	0.079988	264.51	0.009050	0.000067	0.252853
+spec_results/specbzip_L2_S_1_L2_A_16	1.640234	0.082012	266.62	0.009071	0.000067	0.329016
+spec_results/specbzip_L2_S_4_L2_A_8	1.599575	0.079979	274.50	0.009058	0.000067	0.252290
+spec_results/specbzip_L2_S_2_L2_A_4	1.616975	0.080849	270.08	0.009067	0.000067	0.284854
+spec_results/specbzip_L2_S_1_L2_A_4	1.643458	0.082173	259.76	0.009070	0.000067	0.341216
+spec_results/specbzip_L2_S_2_L2_A_8	1.617513	0.080876	279.39	0.009068	0.000067	0.284306
+spec_results/specbzip_L2_S_4_L2_A_16	1.598536	0.079927	265.77	0.009066	0.000067	0.251077

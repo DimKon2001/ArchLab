@@ -1,0 +1,17 @@
+Benchmarks	system.cpu.cpi	sim_seconds	host_seconds	system.cpu.dcache.overall_miss_rate::total	system.cpu.icache.overall_miss_rate::total	system.l2.overall_miss_rate::total
+spec_results/specbzip_DL1_S_128_LS_128_DL1_A_1	1.617513	0.080876	272.29	0.009068	0.000067	0.284306
+spec_results/specbzip_DL1_S_128_LS_128_DL1_A_2	1.634732	0.081737	271.00	0.010771	0.000067	0.236030
+spec_results/specbzip_DL1_S_128_LS_128_DL1_A_4	1.626013	0.081301	279.01	0.009841	0.000067	0.260142
+spec_results/specbzip_DL1_S_128_LS_128_DL1_A_8	1.617513	0.080876	271.30	0.009068	0.000067	0.284306
+spec_results/specbzip_DL1_S_128_LS_128_DL1_A_16	1.617513	0.080876	272.29	0.009068	0.000067	0.284306
+
+spec_results/specbzip_DL1_S_64_LS_128_DL1_A_1	1.643747	0.082187	270.48	0.012206	0.000067	0.206465
+spec_results/specbzip_DL1_S_64_LS_128_DL1_A_2	1.666573	0.083329	275.43	0.014359	0.000067	0.173845
+spec_results/specbzip_DL1_S_64_LS_128_DL1_A_4	1.649833	0.082492	294.49	0.012826	0.000067	0.195893
+spec_results/specbzip_DL1_S_64_LS_128_DL1_A_8	1.643747	0.082187	271.40	0.012206	0.000067	0.206465
+spec_results/specbzip_DL1_S_64_LS_128_DL1_A_16	1.643747	0.082187	270.48	0.012206	0.000067	0.206465
+
+
+
+spec_results/specbzip_DL1_S_128_LS_128_DL1_A_2	1.634732	0.081737	271.00	0.010771	0.000067	0.236030
+

@@ -1,0 +1,6 @@
+Benchmarks	system.cpu.cpi	system.cpu.dcache.overall_miss_rate::total	system.cpu.icache.overall_miss_rate::total	system.l2.overall_miss_rate::total
+specbzip	1.753291	0.014932	0.000077	0.282166
+specbzip1GHz	1.610247	0.014675	0.000077	0.282157
+specbzip3GHz	1.753291	0.014932	0.000077	0.282166
+specbzip2133	1.672175	0.014795	0.000077	0.282159
+specbzip128kbdcache	1.650416	0.011747	0.000077	0.363137
