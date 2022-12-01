@@ -1,41 +1,36 @@
-#speclibm
-make speclibm ASOC_DCACHE=4 FILE_ENDING=DL1_A_4
-make speclibm ASOC_DCACHE=1 FILE_ENDING=DL1_A_1
-make speclibm ASOC_ICACHE=4 FILE_ENDING=IL1_A_4
-make speclibm ASOC_ICACHE=1 FILE_ENDING=IL1_A_1
-make speclibm ASOC_L2=4 FILE_ENDING=L2_A_4
-make speclibm ASOC_L2=16 FILE_ENDING=L2_A_16
 
-make speclibm SIZE_DCACHE=128kB FILE_ENDING=DL1_S_128
-make speclibm SIZE_DCACHE=32kB FILE_ENDING=DL1_S_32
-make speclibm SIZE_ICACHE=128kB FILE_ENDING=IL1_S_128
-make speclibm SIZE_ICACHE=32kB FILE_ENDING=IL1_S_32
-make speclibm SIZE_L2=4MB FILE_ENDING=L2_S_4
-make speclibm SIZE_L2=1MB FILE_ENDING=L2_S_1
+arr=("speclibm" "spechmmer")
 
-make speclibm CACHE_LINE_SIZE=32 FILE_ENDING=LS_32
-make speclibm CACHE_LINE_SIZE=128 FILE_ENDING=LS_128
+L2A=(32 16 8)
+L1DA=(8 4)
+L1IA=(8 4)
 
-#spechmmer
-make spechmmer ASOC_DCACHE=4 FILE_ENDING=DL1_A_4
-make spechmmer ASOC_DCACHE=1 FILE_ENDING=DL1_A_1
-make spechmmer ASOC_ICACHE=4 FILE_ENDING=IL1_A_4
-make spechmmer ASOC_ICACHE=1 FILE_ENDING=IL1_A_1
-make spechmmer ASOC_L2=4 FILE_ENDING=L2_A_4
-make spechmmer ASOC_L2=16 FILE_ENDING=L2_A_16
+L2S=(4) 
+L1DS=(128)
+L1IS=(128)
 
-make spechmmer SIZE_DCACHE=128kB FILE_ENDING=DL1_S_128
-make spechmmer SIZE_DCACHE=32kB FILE_ENDING=DL1_S_32
-make spechmmer SIZE_ICACHE=128kB FILE_ENDING=IL1_S_128
-make spechmmer SIZE_ICACHE=32kB FILE_ENDING=IL1_S_32
-make spechmmer SIZE_L2=4MB FILE_ENDING=L2_S_4
-make spechmmer SIZE_L2=1MB FILE_ENDING=L2_S_1
+LS=(64 128 256)
 
-make spechmmer CACHE_LINE_SIZE=32 FILE_ENDING=LS_32
-make spechmmer CACHE_LINE_SIZE=128 FILE_ENDING=LS_128
+for var in ${arr[@]}; do
+for l1da in ${L1DA[@]}; do
+for l1ia in ${L1IA[@]}; do
+for l2a in ${L2A[@]}; do
+for l1ds in ${L1DS[@]}; do
+for l1is in ${L1IS[@]}; do
+for l2s in ${L2S[@]}; do
+for ls in ${LS[@]}; do
 
+	make $var SIZE_DCACHE="$l1ds"kB SIZE_ICACHE="$l1is"kB CACHE_LINE_SIZE="$ls" ASOC_DCACHE="$l1da" ASOC_ICACHE="$l1ia" SIZE_L2="$l2s"MB ASOC_L2="$l2a" FILE_ENDING=DL1_A_"$l1da"_S_"$l1ds"_IL1_A_"$l1ia"_S_"$l1is"_L2_A_"$l2A"_S_"$l2s"_LS_"$ls"
 
-#Using the read_results.sh file create a txt file with the desired output
+done
+done
+done
+done
+done
+done
+done
+done
+
 echo "[Benchmarks]" > spec_results/data.ini
 
 find  spec_results/ -name "spechmmer*" |cat  >> spec_results/data.ini
