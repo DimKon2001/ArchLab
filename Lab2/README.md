@@ -186,7 +186,7 @@ _Πηγή_: [https://www.gem5.org/documentation/learning_gem5/part1/example_conf
 
 
 2. **mcf**
-    2. **mcf** 
+    
     Στο συγκεκριμένο benchmark παρατηρήθηκε πως με τις default τιμές το miss rate της instruction cache ήταν αρκετά μεγάλο.
 
     |  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total|	system.cpu.icache.overall_miss_rate::total|	system.l2.overall_miss_rate::total|
