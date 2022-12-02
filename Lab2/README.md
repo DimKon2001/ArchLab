@@ -419,13 +419,13 @@ total_cost = (10 * (size(l1d) + size(l1i)) + size(l2)) * c1 + (assoc(l1i) + asso
 
 * Για τις επιλογές του βήματος 2 θα είναι:
 
-| Benchmark | cost   |
-|----------:|-------:|
-| bzip2     |        |
-| sjeng     |        |
-| hmmer     | 19783,9|
-|   mcf     |        |
-|  libm     | 19698,3|
+| Benchmark | cost    |
+|----------:|--------:|
+| bzip2     |         |
+| sjeng     |         |
+| hmmer     | 19783.9 |
+|   mcf     |         |
+|  libm     | 19698.3 |
 
 
 
