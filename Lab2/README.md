@@ -195,6 +195,41 @@ Eδώ αν και φαίνεται το miss rate στην l2 να έχει αυ
 
     Eπειδή το miss rate σχεδόν εκμηδενίστηκε οι υπόλοιποι παράγοντες της icache έμειναν σταθεροί.
 
+    Στην συνέχεια για την εύρεση του associativity:
+
+    |  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total
+    |------------------:|:-------:|:-------:|
+    |specmcf_DL1_A_4_S_128_IL1_A_2_S_32_LS_128	|1.329491	|0.001120	 | 
+    |specmcf_DL1_A_1_S_128_IL1_A_2_S_32_LS_128	|1.333098	|0.001772	 | 
+    |specmcf_DL1_A_16_S_128_IL1_A_2_S_32_LS_128 | 1.329359|0.001104  | 
+    |specmcf_DL1_A_8_S_128_IL1_A_2_S_32_LS_128	|1.329424	|0.001106	 | 
+    |specmcf_DL1_A_2_S_128_IL1_A_2_S_32_LS_128	|1.329652	|0.001180	 | 
+
+    Επιλέχθηκε associativity = 16, το οποίο όμως έχει πολύ μεγάλο κόστος. Μια πιο οικονομική λύση, χωρίς σχεδόν καμία επίδραση στην απόδοση θα ήταν η χρήση direct mapped ή 2 way set associative l2 cache. Mια ακόμη πιο οικονομική λύση θα ήταν η διατήρηση της dcahce στα 64kb 2 way set associsiative με miss rate = 0.001384 (μισό κόστος). Στις παρακάτω προσομοιώσεις έχει αλλαχθεί το associativity της icache το οποίο όμως δεν επηρεάζει τα misses στην dcache, ενώ επειδή και τα overall misses με associativity 2
+    είναι λίγα, μπορούμε να πούμε πως δεν έχει επίδραση στην l2.
+        
+    |  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total|	system.cpu.icache.overall_miss_rate::total|	system.l2.overall_miss_rate::total|
+    |------------------:|:-------:|:-------:|:-------:|:-------|
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_1_S_4_LS_128	|1.123167	|	0.001180	| 0.000013 | 0.622356 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_2_S_4_LS_128	|1.123167	|	0.001180	| 0.000013 | 0.622356 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_2_S_2_LS_128	|1.123623	|	0.001180	| 0.000013 | 0.630115 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_8_S_1_LS_128	|1.127683	|	0.001180	| 0.000013 | 0.704042 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_1_S_1_LS_128	|1.130283	|	0.001180	| 0.000013 | 0.751377 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_8_S_2_LS_128	|1.123454	|	0.001180	| 0.000013 | 0.628332 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_8_S_4_LS_128	|1.123167	|	0.001180	| 0.000013 | 0.622356 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_4_S_1_LS_128	|1.127885	|	0.001180	| 0.000013 | 0.705200 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_16_S_4_LS_128	|1.123167	|	0.001180	| 0.000013 | 0.622356 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_4_S_2_LS_128	|1.123471	|	0.001180	| 0.000013 | 0.629177 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_1_S_2_LS_128	|1.127125	|	0.001180	| 0.000013 | 0.698755 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_2_S_1_LS_128	|1.127838	|	0.001180	| 0.000013 | 0.706889 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_16_S_2_LS_128	|1.123564	|	0.001180	| 0.000013 | 0.629396 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_4_S_4_LS_128	|1.123167	|	0.001180	| 0.000013 | 0.622356 |
+    |specmcf_DL1_A_2_S_128_IL1_A_16_S_64_L2_A_16_S_1_LS_128	|1.127567	|	0.001180	| 0.000013 | 0.704167 |
+
+    
+    Για την l2 το μικρότερο miss rate επιτυγχάνεται για size = 4MB και associativity = 16, ενώ η υλοποίηση με την καλύτερη σχέση κόστους-miss rate είναι αυτή με size = 2MB και associativity = 2.
+
+3. **jeng** μένει το line size 64, l2
     Στην συνέχεια για την εύρεση του associativity
 spec_results/specmcf_DL1_A_4_S_128_IL1_A_2_S_64_LS_128	1.329491	0.066475	292.68	0.001120	0.035257	0.020533
 spec_results/specmcf_DL1_A_1_S_128_IL1_A_2_S_64_LS_128	1.333098	0.066655	285.10	0.001772	0.035206	0.020180
@@ -213,10 +248,47 @@ Mε αύξηση του line size σε 128 παρατηρήθηκε μεγάλη
 μένει το line size 64
 |  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total|	system.cpu.icache.overall_miss_rate::total|	system.l2.overall_miss_rate::total|
 |------------------:|:-------:|:-------:|:-------:|:-------|
-|jeng_LS_32	        |17.653706	|0.243654	|0.000023	|0.999988|
-|jeng_LS_128        |	6.799471	|0.060922	|0.000015	|0.999825|
+|specsjeng_DL1_S_32_DL1_A_2_LS_128	|6.799471|	0.060926|	0.000015	|0.999686 |
+|specsjeng_DL1_S_32_DL1_A_4_LS_128	|6.799674|	0.060918|	0.000015	|0.999942 |
+|specsjeng_DL1_S_32_DL1_A_8_LS_128	|6.799674|	0.060918|	0.000015	|0.999945 |
+|specsjeng_DL1_S_64_DL1_A_2_LS_128	|6.799471|	0.060922|	0.000015	|0.999825 |
+|specsjeng_DL1_S_64_DL1_A_4_LS_128	|6.799536|	0.060918|	0.000015	|0.999949 |
+|specsjeng_DL1_S_64_DL1_A_8_LS_128	|6.799674|	0.060918|	0.000015	|0.999949 |
+|specsjeng_DL1_S_128_DL1_A_2_LS_128	|6.799362|	0.060921|	0.000015	|0.999856 |
+|specsjeng_DL1_S_128_DL1_A_4_LS_128	|6.799362|	0.060918|	0.000015	|0.999952 |
+|specsjeng_DL1_S_128_DL1_A_8_LS_128	|6.799609|	0.060918|	0.000015	|0.999952 |
 
-Για την dcache παρατηρήθηκε ότι το associativity πάνω από 2 και dcache size δεν είχαν επίδραση στο CPI
+Για την dcache παρατηρήθηκε ότι το associativity πάνω από 2 και dcache size πάνω από 32ΚΒ δεν είχαν επίδραση στο CPI. 
+Το μικρότερο miss rate αντιστοιχεί σε 4 set associative 32kb dcache. Για πιο οικονομική κατασκευή επιλέγεται direct mapped 8kb dcache (1/4 του μεγέθους-κόστους και μόνο 1 συγκριτή).
+
+|  benchmarks        |system.cpu.dcache.overall_miss_rate::total|	
+|------------------:|:-------:|
+|specsjeng_DL1_A_1_S_8_IL1_A_1_S_8_L2_A_1_S_1_LS_128  | 0.062027|		
+|specsjeng_DL1_A_1_S_32_IL1_A_1_S_16_L2_A_1_S_1_LS_128|	0.062027|
+
+Για πιο οικονομική κατασκευή παρατηρήθηκε πως μια direct mapped 8kb icache είχε σχεδόν το ίδιο miss rate με την default
+με πολύ μικρότερο κόστος (1/4 του μεγέθους).
+
+|  benchmarks       |	system.cpu.icache.overall_miss_rate::total|
+|------------------:|:-------:|
+|specsjeng_DL1_A_1_S_8_IL1_A_1_S_8_L2_A_1_S_4_LS_128	|   0.00028 |													
+|specsjeng_DL1_A_1_S_32_IL1_A_1_S_16_L2_A_1_S_4_LS_128|	  0.000275|					
+|specsjeng_DL1_A_1_S_128_IL1_A_1_S_32_L2_A_1_S_2_LS_128|	1.6E-05	|
+
+Aπό τα παραπάνω φαίνεται το μεγάλο miss rate της l2 cache, το οποίο θα αντιμετωπιστεί με αύξηση του size της l2.
+Συγκεκριμένα προκύπτει: 
+
+specsjeng_FINALDL1_A_4_S_32_IL1_A_2_S_32_L2_A_8_S_2_LS_128 
+system.cpu.cpi                               6.799380
+specsjeng_FINALDL1_A_4_S_32_IL1_A_2_S_32_L2_A_8_S_4_LS_128 
+system.cpu.cpi                               6.795293
+specsjeng_FINALDL1_A_4_S_32_IL1_A_2_S_32_L2_A_16_S_4_LS_128
+system.cpu.cpi                               6.79589
+
+Φαίνεται πως δεν υπάρχει επίδραση της l2 στο CPI
+
+																																																									
+ 
 
 
 spec_results/specsjeng_DL1_S_32_DL1_A_2_LS_128	6.799471	0.339974	501.58	0.060926	0.000015	0.999686
