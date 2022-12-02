@@ -112,13 +112,14 @@ _Πηγή_: [https://www.gem5.org/documentation/learning_gem5/part1/example_conf
 ![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab2/plots/L2-S.jpg)
 ![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab2/plots/LS.jpg)
 
-1. **bzip**
+
+ 1. **bzip** Mένει instruction cache associativity 1
+
     Στο συγκεκριμένο benchmark παρατηρήθηκε πως με τις default τιμές το miss rate της instruction cache ήταν σχεδόν μηδενικό, 
-    οπότε διατηρήθηκαν οι default τιμές ως προς το μέγεθος και τo associativity της. Στην συνέχεια διπλασιάστηκε και 
-    υποδιπλασιάστηκε το μέγεθος του cache line, ενός παράγοντα που επηρεάζει και τους 3 τύπους cache misses της εργασίας. 
-    Με διπλασιασμό του cache line για σταθερό μέγεθος cache βελτιώνεται το spatial locality του προγράμματος και μειώνονται 
-    τα compulsory misses, αλλά αυξάνονται τα capacity misses, εξαιτίας του μεγαλύτερου μεγέθους των cache lines. 
-    Εδώ παρατηρήθηκε πως με τα default cache sizes βελτιώθηκαν και τα 3 cache miss rates, οπότε το cache line size έγινε 128. 
+    οπότε διατηρήθηκαν οι default τιμές ως προς το μέγεθος και τo associativity της. 
+    
+    Στην συνέχεια διπλασιάστηκε και 
+    υποδιπλασιάστηκε το μέγεθος του cache line, ενός παράγοντα που επηρεάζει και τους 3 τύπους cache misses της εργασίας και παρατηρήθηκε πως με τα default cache sizes βελτιώθηκαν και τα 3 cache miss rates, οπότε το cache line size έγινε 128. 
 
     |  benchmarks        |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total|	system.cpu.icache.overall_miss_rate::total|	system.l2.overall_miss_rate::total|
     |:------------------:|:----------:|:-------:|:-------:|:-------|
@@ -126,9 +127,7 @@ _Πηγή_: [https://www.gem5.org/documentation/learning_gem5/part1/example_conf
     |bzip_DL1_S_64_LS_64 |	1.679650	|0.014798	|0.000077	|0.282163|
 
     
-    
-  
-    Στην συνέχεια, το προβλήματα των misses για την data cache, την instruction cache και την l2 cache είναι ανεξάρτητα.
+    Στην συνέχεια, το προβλήματα των misses για την data cache, την instruction cache και την l2 cache είναι ανεξάρτητα(DL1_S_64_LS_128).
 
     |  benchmarks        |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total|	system.cpu.icache.overall_miss_rate::total|	system.l2.overall_miss_rate::total|
     |:------------------:|:----------:|:-------:|:-------:|:-------|
@@ -143,59 +142,82 @@ _Πηγή_: [https://www.gem5.org/documentation/learning_gem5/part1/example_conf
     |bzip_DL1_S_64_DL1_A_8	|1.643747	|0.012206	|0.000067	|0.206465|
     |bzip_DL1_S_64_DL1_A_16 |1.643747 |0.012206 |0.000067 |0.206465|
 
-Ελέχγοντας και τον συνολικό αριθμό των misses στην data cache επιλέχθηκε:
+    Επιλέχθηκε dcache size = 128kb και associativity = 8.
 
-```
-size=131072
-assoc=8
-```
+      Tέλος για την l2 cache (DL1_S_64_LS_128_DL1_S_128_DL1_A_8).  
 
-Tέλος για την l2 cache.
+      |  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total|	system.cpu.icache.overall_miss_rate::total|	system.l2.overall_miss_rate::total|
+      |------------------:|:-------:|:-------:|:-------:|:-------|
+      |bzip_L2_S_1_L2_A_1	|1.681008	|0.009068	|0.000067	|0.419381|
+      |bzip_L2_S_1_L2_A_2	|1.650592	|0.009070	|0.000067	|0.359686|
+      |bzip_L2_S_1_L2_A_4	|1.643458	|0.009070	|0.000067	|0.341216|
+      |bzip_L2_S_1_L2_A_8	|1.641576	|0.009071	|0.000067	|0.333352|
+      |bzip_L2_S_1_L2_A_16|	1.640234|	0.009071|	0.000067|	0.329016|
+      |bzip_L2_S_2_L2_A_1	|1.640652	|0.009069	|0.000067	|0.327909|
+      |bzip_L2_S_2_L2_A_2	|1.625099	|0.009068	|0.000067	|0.300075|
+      |bzip_L2_S_2_L2_A_4	|1.616975	|0.009067	|0.000067	|0.284854|
+      |bzip_L2_S_2_L2_A_8	|1.617513	|0.009068	|0.000067	|0.284306|
+      |bzip_L2_S_2_L2_A_16|	1.618032|	0.009068|	0.000067|	0.284324|
+      |bzip_L2_S_4_L2_A_1	|1.602512	|0.009062	|0.000067	|0.259208|
+      |bzip_L2_S_4_L2_A_2	|1.600258	|0.009050	|0.000067	|0.253120|
+      |bzip_L2_S_4_L2_A_4	|1.599761	|0.009050	|0.000067	|0.252853|
+      |bzip_L2_S_4_L2_A_8	|1.599575	|0.009058	|0.000067	|0.252290|
+      |bzip_L2_S_4_L2_A_16|	1.598536|	0.009066|	0.000067|0.251077|
 
+      Επιλέχθηκε l2cache size = 4MB και associativity = 16.
 
-|  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total|	system.cpu.icache.overall_miss_rate::total|	system.l2.overall_miss_rate::total|
-|------------------:|:-------:|:-------:|:-------:|:-------|
-|bzip_L2_S_1_L2_A_1	|1.681008	|0.009068	|0.000067	|0.419381|
-|bzip_L2_S_1_L2_A_2	|1.650592	|0.009070	|0.000067	|0.359686|
-|bzip_L2_S_1_L2_A_4	|1.643458	|0.009070	|0.000067	|0.341216|
-|bzip_L2_S_1_L2_A_8	|1.641576	|0.009071	|0.000067	|0.333352|
-|bzip_L2_S_1_L2_A_16|	1.640234|	0.009071|	0.000067|	0.329016|
-|bzip_L2_S_2_L2_A_1	|1.640652	|0.009069	|0.000067	|0.327909|
-|bzip_L2_S_2_L2_A_2	|1.625099	|0.009068	|0.000067	|0.300075|
-|bzip_L2_S_2_L2_A_4	|1.616975	|0.009067	|0.000067	|0.284854|
-|bzip_L2_S_2_L2_A_8	|1.617513	|0.009068	|0.000067	|0.284306|
-|bzip_L2_S_2_L2_A_16|	1.618032|	0.009068|	0.000067|	0.284324|
-|bzip_L2_S_4_L2_A_1	|1.602512	|0.009062	|0.000067	|0.259208|
-|bzip_L2_S_4_L2_A_2	|1.600258	|0.009050	|0.000067	|0.253120|
-|bzip_L2_S_4_L2_A_4	|1.599761	|0.009050	|0.000067	|0.252853|
-|bzip_L2_S_4_L2_A_8	|1.599575	|0.009058	|0.000067	|0.252290|
-|bzip_L2_S_4_L2_A_16|	1.598536|	0.009066|	0.000067|0.251077|
+      Το κόστος για την αύξηση του line size είναι σχεδόν μηδενικό, οπότε επιλέγεται ξανά line_size = 128, όμως για την dcache παρατηρείται πως δεν
+      απαιτείται associativity 8, αλλά πως και το associativity 1 δίνει το ίδιο CPI με ένα μόνο συγκριτή.
+      Τέλος με χρήση l2 cache 2MB με associativity 4 το κόστος για την l2 είναι λιγότερο από το 1/2, ενώ το cpi είναι μόνο 2% λιγότερο σε σχέση με την ακριβή υλοποίηση (το miss rate της l2 αυξάνεται λιγότερο από 10%).
+      
+      Aκόμη πιο φθηνές υλοποιήσεις προκύπτουν με:
 
-Eδώ αν και φαίνεται το miss rate στην l2 να έχει αυξηθεί σε σχέση με την υλοποίηση, όπου έχει αλλάξει μόνο το cache line size σε 128, στην πραγματικότητα αυτή
-η αύξηση οφείλεται στο γεγονός ότι υπάρχουν λιγότερα misses στην data cache, οπότε λιγότερες φορές αναζητείται κάτι στην l2. Δηλαδή έχω λιγότερα l2 misses αν και σε ποσοστό είναι περισσότερα.
+      Για dcache size = 16KB και associativity = 2
+      system.cpu.dcache.overall_miss_rate::.cpu.data     0.012207
 
-Το κόστος για την αύξηση του line size είναι σχεδόν μηδενικό, οπότε επιλέγεται ξανά line_size = 128, όμως για την dcache παρατηρείται πως δεν
-απαιτείται associativity 8, αλλά πως και το associativity 1 δίνει το ίδιο CPI χωρίς να απαιτεί συγκριτές.
-Τέλος με χρήση l2 cache 2MB με associativity 4 το κόστος για την l2 είναι λιγότερο από το 1/2, ενώ το cpi είναι μόνο 2% λιγότερο σε σχέση με την ακριβή υλοποίηση.
+      Για dcache size = 16KB και associativity = 16
+      system.cpu.dcache.overall_miss_rate::total     0.012206 
+    
+      Για direct mapped 8KB icache (τα icache misses είναι πολύ λίγα και σε απόλυτο αριθμό).
+      system.cpu.icache.overall_miss_rate::.cpu.inst     0.000445 
+
+      Για 2 way associative 16kb icache με μισό κόστος
+      system.cpu.icache.overall_miss_rate::total     0.000078
+
 
 2. **mcf**
+    2. **mcf** 
     Στο συγκεκριμένο benchmark παρατηρήθηκε πως με τις default τιμές το miss rate της instruction cache ήταν αρκετά μεγάλο.
 
-    spec_results/specmcf_LS_128	1.330534	0.066527	281.87	**0.001384**	0.035212	0.020416
-    spec_results/specmcf_LS_64	1.299095	0.064955	298.18	0.002108	0.023612	0.055046
-    spec_results/specmcf_LS_32	1.260085	0.063004	295.74	0.003208	**0.013171**	0.159189
+    |  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total|	system.cpu.icache.overall_miss_rate::total|	system.l2.overall_miss_rate::total|
+    |------------------:|:-------:|:-------:|:-------:|:-------|
+    |specmcf_LS_128     | 	1.330534 |	**0.001384**|	0.035212	|0.020416|
+    |specmcf_LS_64	     | 1.299095	 |0.002108	|0.023612	 |0.055046|
+    |specmcf_LS_32	     | 1.260085	 |0.003208	|**0.013171** |	0.159189|
 
-    Λόγω της αντιστρόφως ανάλογης σχέσης μεταξύ ls icache miss rate και dcache miss rate
-    Για την μείωση του icache miss rate διπλασιάστηκε η icache και επιλέχθηκε line size = 128
+    Με αύξηση του LS αυξάνονταν το miss rate της icache και μειώνονταν αυτό της dcache, γεγονός που οδήγησε στο συμπέρασμα πως τα 
+    μεγαλύτερα blocks αύξησαν τα capacity misses στην icache. Έτσι για την μείωση του icache miss rate διπλασιάστηκε η icache.
 
-    spec_results/specmcf_LS_128_DL1_S_128_IL1_S_64	1.123502	0.056175	261.41	**0.001180**	**0.000020**	0.624600
-    spec_results/specmcf_LS_32_DL1_S_128_IL1_S_64	1.178559	0.058928	272.66	0.003043	0.000026	0.869800
-    spec_results/specmcf_LS_64_DL1_S_128_IL1_S_64	1.155171	0.057759	271.56	0.001932	0.000018	0.776058
-    spec_results/specmcf_LS_16_DL1_S_128_IL1_S_64	1.314712	0.065736	277.74	0.004511	0.000035	0.918531
+    |  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total|	system.cpu.icache.overall_miss_rate::total|	system.l2.overall_miss_rate::total|
+    |------------------:|:-------:|:-------:|:-------:|:-------|
+    | specmcf_LS_128_DL1_S_128_IL1_S_64	| 1.123502|	**0.001180 **|	**0.000020** |	0.624600 |
+    | specmcf_LS_32_DL1_S_128_IL1_S_64	 | 1.178559 |	 0.003043	   | 0.000026      |	0.869800 |
+    | specmcf_LS_64_DL1_S_128_IL1_S_64	 | 1.155171 |	 0.001932	   | 0.000018      |	0.776058 |
+    | specmcf_LS_16_DL1_S_128_IL1_S_64	 | 1.314712 |	 0.004511	   | 0.000035      |	0.918531 | 
 
+    Τελικά επιλέχθηκε line size = 128, ενώ η dcache έγινε και αυτή 128KB.
     Eπειδή το miss rate σχεδόν εκμηδενίστηκε οι υπόλοιποι παράγοντες της icache έμειναν σταθεροί.
 
     Στην συνέχεια για την εύρεση του associativity:
+
+    |  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total
+    |------------------:|:-------:|:-------:|
+    |specmcf_DL1_A_4_S_128_IL1_A_2_S_32_LS_128	|1.329491	|0.001120	 | 
+    |specmcf_DL1_A_1_S_128_IL1_A_2_S_32_LS_128	|1.333098	|0.001772	 | 
+    |specmcf_DL1_A_16_S_128_IL1_A_2_S_32_LS_128 | 1.329359|0.001104  | 
+    |specmcf_DL1_A_8_S_128_IL1_A_2_S_32_LS_128	|1.329424	|0.001106	 | 
+    |specmcf_DL1_A_2_S_128_IL1_A_2_S_32_LS_128	|1.329652	|0.001180	 | 
+
 
     |  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total
     |------------------:|:-------:|:-------:|
@@ -228,17 +250,6 @@ Eδώ αν και φαίνεται το miss rate στην l2 να έχει αυ
 
     
     Για την l2 το μικρότερο miss rate επιτυγχάνεται για size = 4MB και associativity = 16, ενώ η υλοποίηση με την καλύτερη σχέση κόστους-miss rate είναι αυτή με size = 2MB και associativity = 2.
-
-3. **jeng** μένει το line size 64, l2
-    Στην συνέχεια για την εύρεση του associativity
-spec_results/specmcf_DL1_A_4_S_128_IL1_A_2_S_64_LS_128	1.329491	0.066475	292.68	0.001120	0.035257	0.020533
-spec_results/specmcf_DL1_A_1_S_128_IL1_A_2_S_64_LS_128	1.333098	0.066655	285.10	0.001772	0.035206	0.020180
-spec_results/specmcf_DL1_A_16_S_128_IL1_A_2_S_64_LS_128	1.329359	0.066468	284.06	0.001104	0.035257	0.020538
-spec_results/specmcf_DL1_A_8_S_128_IL1_A_2_S_64_LS_128	1.329424	0.066471	302.41	0.001106	0.035256	0.020539
-spec_results/specmcf_DL1_A_2_S_128_IL1_A_2_S_64_LS_128	1.329652	0.066483	308.67	0.001180	0.035247	0.020510
-
-
-    
 
 3. **jeng**
 
