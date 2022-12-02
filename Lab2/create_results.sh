@@ -1,9 +1,12 @@
 echo "[Benchmarks]" > spec_results/data.ini
 
-find  spec_results/ -name "spechmmer*" |cat  >> spec_results/data.ini
+find  spec_results/ -name "specmcf*" |cat  >> spec_results/data.ini
 find  spec_results/ -name "speclibm*" |cat  >> spec_results/data.ini
+find  spec_results/ -name "spechmmer*" |cat  >> spec_results/data.ini
+find  spec_results/ -name "spechmmer*" |cat  >> spec_results/data.ini
+find  spec_results/ -name "spechmmer*" |cat  >> spec_results/data.ini
 
-echo "[Parameters]" >> spec_results/data.ini
+echo "[Parameters]" >> spec_results/data.iniß
 
 echo "system.cpu.cpi" >> spec_results/data.ini
 echo "sim_seconds" >> spec_results/data.ini
