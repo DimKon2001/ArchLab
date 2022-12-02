@@ -303,14 +303,11 @@ system.cpu.cpi                               6.795293
 specsjeng_FINALDL1_A_4_S_32_IL1_A_2_S_32_L2_A_16_S_4_LS_128
 system.cpu.cpi                               6.79589
 specsjeng_FINALDL1_A_4_S_32_IL1_A_2_S_32_L2_A_4_S_2_LS_128
-system.cpu.cpi                               6.799362     
+system.cpu.cpi                               6.799362   
+specsjeng_FINALDL1_A_4_S_32_IL1_A_2_S_32_L2_A_1_S_1_LS_128
+system.cpu.cpi                               6.801166
 
-Φαίνεται πως υπάρχει ελάχιστη επίδραση της l2 στο CPI. Σε μια οικονομική υλοποίηση θα χρησιμοποιηθεί l2 size και associativity = 
-
-																																																									
- 
-
-
+Φαίνεται πως υπάρχει ελάχιστη επίδραση της l2 στο CPI. Σε μια οικονομική υλοποίηση θα χρησιμοποιηθεί l2 size = 1MB και associativity = 1
 
 4. **hmmer**
 
