@@ -1,4 +1,4 @@
-## Αναφορά Πρώτου Εργαστηρίου
+## Αναφορά Δεύτερου Εργαστηρίου
 ### Αρχιτεκτονική Υπολογιστών
 
 * Σε αυτήν την άσκηση γίνεται προσομοίωση των [SPEC CPU2006 Benchmarks](https://www.spec.org/cpu2006/) στο [gem5](https://www.gem5.org). 
@@ -45,6 +45,7 @@ cache_line_size=64
 | system.l2.overall_miss_rate::total| 0.282163 | 0.055046 | 0.077760 | 0.999972 | 0.999944 |  
 
 
+![alt text](http://url/to/img.png)
 
 3. 
 
