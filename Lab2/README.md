@@ -113,7 +113,7 @@ _Πηγή_: [https://www.gem5.org/documentation/learning_gem5/part1/example_conf
 ![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab2/plots/LS.jpg)
 
 
- 1. **bzip** Mένει instruction cache associativity 1
+ 1. **bzip**
 
     Στο συγκεκριμένο benchmark παρατηρήθηκε πως με τις default τιμές το miss rate της instruction cache ήταν σχεδόν μηδενικό, 
     οπότε διατηρήθηκαν οι default τιμές ως προς το μέγεθος και τo associativity της. 
