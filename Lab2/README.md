@@ -102,7 +102,15 @@ _Πηγή_: [https://www.gem5.org/documentation/learning_gem5/part1/example_conf
 
 Εδώ ζητείται η αλλαγή κάποιων παραμέτρων της ιεραρχίας μνήμης, ώστε το CPI των εντολών να προσεγγίζει το ιδανικό **1**.
 
-* Αρχικά, παραθέτουμε διαγράμματ που δείχνουν την επίδραση κάθε παράγοντα ξεχωριστά στην απόδοση του κάθε Benchmark. Για τη δημιουργία αυτών, κρατάμε σταθερούς όλους τους υπόλοιπους παράγοντες στις default τιμές και μεταβάλλουμε κάθε φορά την παράμετρο που μας ενδιαφέρει.
+* Αρχικά, παραθέτουμε διαγράμματα που δείχνουν την επίδραση κάθε παράγοντα ξεχωριστά στην απόδοση του κάθε Benchmark. Για τη δημιουργία αυτών, κρατάμε σταθερούς όλους τους υπόλοιπους παράγοντες στις default τιμές και μεταβάλλουμε κάθε φορά την παράμετρο που μας ενδιαφέρει.
+
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab2/plots/DL1-A.jpg)
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab2/plots/DL1-S.jpg)
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab2/plots/IL1-S.jpg)
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab2/plots/IL1-A.jpg)
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab2/plots/L2-A.jpg)
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab2/plots/L2-S.jpg)
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab2/plots/LS.jpg)
 
 1. **bzip**
     Στο συγκεκριμένο benchmark παρατηρήθηκε πως με τις default τιμές το miss rate της instruction cache ήταν σχεδόν μηδενικό, 
