@@ -229,7 +229,7 @@ Eδώ αν και φαίνεται το miss rate στην l2 να έχει αυ
     
     Για την l2 το μικρότερο miss rate επιτυγχάνεται για size = 4MB και associativity = 16, ενώ η υλοποίηση με την καλύτερη σχέση κόστους-miss rate είναι αυτή με size = 2MB και associativity = 2.
 
-3. **jeng** μένει το line size 64, l2
+
     Στην συνέχεια για την εύρεση του associativity
 spec_results/specmcf_DL1_A_4_S_128_IL1_A_2_S_64_LS_128	1.329491	0.066475	292.68	0.001120	0.035257	0.020533
 spec_results/specmcf_DL1_A_1_S_128_IL1_A_2_S_64_LS_128	1.333098	0.066655	285.10	0.001772	0.035206	0.020180
@@ -240,7 +240,7 @@ spec_results/specmcf_DL1_A_2_S_128_IL1_A_2_S_64_LS_128	1.329652	0.066483	308.67	
 
     
 
-3. **jeng**
+1. **jeng**
 
 Mε αύξηση του line size σε 128 παρατηρήθηκε μεγάλη μείωση στο CPI με πολύ μικρό κόστος, ενώ το miss rate στην instruction cache
 σχεδόν εκμηδενίστηκε, οπότε η instruction cache διατηρήθηκε στις default τιμές.
