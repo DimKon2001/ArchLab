@@ -242,10 +242,17 @@ spec_results/specmcf_DL1_A_2_S_128_IL1_A_2_S_64_LS_128	1.329652	0.066483	308.67	
 
 3. **jeng**
 
-Mε αύξηση του line size σε 128 παρατηρήθηκε μεγάλη μείωση στο CPI με πολύ μικρό κόστος, ενώ το miss rate στην instruction cache
+Με αύξηση του line size βελτιώθηκαν και τα 3 cache miss rates και γι'αυτό επιλέχθηκε cahce line size = 128, ενώ το icache miss rate σχεδόν εκμηδενίστηκε, οπότε η icache διατηρήθηκε στις default τιμές.
+
+|  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total|	system.cpu.icache.overall_miss_rate::total|	system.l2.overall_miss_rate::total|
+|------------------:|:-------:|:-------:|:-------:|:-------|
+|specsjeng_LS_32	        |17.653706	|0.243654	|0.000023	|0.999988|
+|specsjeng_LS_128        |	6.799471	|0.060922	|0.000015	|0.999825|
+
+Mε line size  128 παρατηρήθηκε μεγάλη μείωση στο CPI με πολύ μικρό κόστος, ενώ το miss rate στην instruction cache
 σχεδόν εκμηδενίστηκε, οπότε η instruction cache διατηρήθηκε στις default τιμές.
 
-μένει το line size 64
+
 |  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total|	system.cpu.icache.overall_miss_rate::total|	system.l2.overall_miss_rate::total|
 |------------------:|:-------:|:-------:|:-------:|:-------|
 |specsjeng_DL1_S_32_DL1_A_2_LS_128	|6.799471|	0.060926|	0.000015	|0.999686 |
@@ -290,24 +297,6 @@ system.cpu.cpi                               6.79589
 																																																									
  
 
-
-spec_results/specsjeng_DL1_S_32_DL1_A_2_LS_128	6.799471	0.339974	501.58	0.060926	0.000015	0.999686
-spec_results/specsjeng_DL1_S_32_DL1_A_4_LS_128	6.799674	0.339984	501.91	0.060918	0.000015	0.999942
-spec_results/specsjeng_DL1_S_32_DL1_A_8_LS_128	6.799674	0.339984	516.35	0.060918	0.000015	0.999945
-
-spec_results/specsjeng_DL1_S_64_DL1_A_2_LS_128	6.799471	0.339974	505.23	0.060922	0.000015	0.999825
-spec_results/specsjeng_DL1_S_64_DL1_A_4_LS_128	6.799536	0.339977	541.99	0.060918	0.000015	0.999949
-spec_results/specsjeng_DL1_S_64_DL1_A_8_LS_128	6.799674	0.339984	558.96	0.060918	0.000015	0.999949
-
-spec_results/specsjeng_DL1_S_128_DL1_A_2_LS_128	6.799362	0.339968	505.99	0.060921	0.000015	0.999856
-spec_results/specsjeng_DL1_S_128_DL1_A_4_LS_128	6.799362	0.339968	502.81	0.060918	0.000015	0.999952
-spec_results/specsjeng_DL1_S_128_DL1_A_8_LS_128	6.799609	0.339980	490.68	0.060918	0.000015	0.999952
-
-
-
-Για πιο οικονομική κατασκευή παρατηρήθηκε πως μια direct mapped 32kb dcache είχε system.cpu.cpi = 6.834823.
-
-Mένει το l2
 
 
 4. **hmmer**
