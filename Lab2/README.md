@@ -44,7 +44,7 @@ cache_line_size=64
 |system.cpu.icache.overall_miss_rate::total |  0.000077 | 0.023612 | 0.000221 | 0.000020 | 0.000094 |
 | system.l2.overall_miss_rate::total| 0.282163 | 0.055046 | 0.077760 | 0.999972 | 0.999944 |  
 
-![alt text](http://url/to/img.png)
+
 
 3. 
 
