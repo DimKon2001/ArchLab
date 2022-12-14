@@ -2,8 +2,8 @@ echo "[Benchmarks]" > spec_results/data.ini
 
 find  spec_results/ -name "specmcf*" |cat  >> spec_results/data.ini
 find  spec_results/ -name "speclibm*" |cat  >> spec_results/data.ini
-find  spec_results/ -name "spechmmer*" |cat  >> spec_results/data.ini
-find  spec_results/ -name "spechmmer*" |cat  >> spec_results/data.ini
+find  spec_results/ -name "specbzip*" |cat  >> spec_results/data.ini
+find  spec_results/ -name "specsjeng*" |cat  >> spec_results/data.ini
 find  spec_results/ -name "spechmmer*" |cat  >> spec_results/data.ini
 
 echo "[Parameters]" >> spec_results/data.iniß

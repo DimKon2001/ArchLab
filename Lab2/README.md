@@ -113,7 +113,7 @@ _Πηγή_: [https://www.gem5.org/documentation/learning_gem5/part1/example_conf
 ![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab2/plots/LS.jpg)
 
 
- 1. **bzip** Mένει instruction cache associativity 1
+ 1. **bzip**
 
     Στο συγκεκριμένο benchmark παρατηρήθηκε πως με τις default τιμές το miss rate της instruction cache ήταν σχεδόν μηδενικό, 
     οπότε διατηρήθηκαν οι default τιμές ως προς το μέγεθος και τo associativity της. 
@@ -186,7 +186,7 @@ _Πηγή_: [https://www.gem5.org/documentation/learning_gem5/part1/example_conf
 
 
 2. **mcf**
-    2. **mcf** 
+    
     Στο συγκεκριμένο benchmark παρατηρήθηκε πως με τις default τιμές το miss rate της instruction cache ήταν αρκετά μεγάλο.
 
     |  benchmarks       |system.cpu.cpi|system.cpu.dcache.overall_miss_rate::total|	system.cpu.icache.overall_miss_rate::total|	system.l2.overall_miss_rate::total|
@@ -416,16 +416,6 @@ system.cpu.cpi                               6.801166
 total_cost = (10 * (size(l1d) + size(l1i)) + size(l2)) * c1 + (assoc(l1i) + assoc(l2) + assoc(l1d) + blocksize) * exec_time * c2 + exec_time * c3
 
 Έτσι, ανάλογα με την εφαρμογή επιλέγουμε τα c1, c2, c3. Αυθαίρετα, έστω c1 = 3, c2 = 1, c3 = 2
-
-* Για τις επιλογές του βήματος 2 θα είναι:
-
-| Benchmark | cost |
-|----------:|-----:|
-| bzip2     |      |
-| sjeng     |      |
-| hmmer     |      |
-|   mcf     |      |
-|  libm     |      |
 
 
 
