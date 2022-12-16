@@ -26,13 +26,13 @@ $$PowerDynamic = \frac{1}{2} * CapacitiveLoad * {Voltage}^2 * FrequencySwitched$
     
     Για την ενέργεια που καταναλώνει ένα workload:
 
-    $$Energy (Wh) = Power(W) * Time\_Duration(h)$$
-    $$Power(W) = Runtime\_Dynamic(W) + Total\_Leakage(W)$$ 
-    $$Total\_Leakage(W) = Subthreshold\_Leakage(W) + Gate\_Leakage(W)$$
+    $$Energy (Wh) = Power(W) * TimeDuration(h)$$
+    $$Power(W) = RuntimeDynamic(W) + TotalLeakage(W)$$ 
+    $$TotalLeakage(W) = SubthresholdLeakage(W) + GateLeakage(W)$$
 
     Για παράδειγμα αν ο επεξεργαστής των 50W τελείωνει την εκτέλεση στο 1/12 του χρόνου, θα πρέπει να προτιμηθεί, παρόλο που έχει μεγαλύτερη ισχύ, καθώς για την ενέργεια τους ισχύει:
 
-    $$\frac{Energy_{50W}(Wh)}{{Energy_{5W}(Wh)}}   = \frac{50}{5} * \frac{1/12 *Time\_Duration(h)}{Time\_Duration(h)} = \frac{10}{12} < 1$$
+    $$\frac{Energy_{50W}(Wh)}{{Energy_{5W}(Wh)}}   = \frac{50}{5} * \frac{1/12 *TimeDuration(h)}{TimeDuration(h)} = \frac{10}{12} < 1$$
 
 
 * Για τον **Αrm** ισχύει:
