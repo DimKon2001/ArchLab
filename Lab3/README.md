@@ -274,7 +274,7 @@
 
 ![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/EDP/L2_A_EDP.png)
 
-![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Peak%20Power/PPL2A.png)
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Peak%20Power/PPIL2A.png)
 
 |Benchmark|L2_A|Energy     |Runtime |EDP        |
 |---------|----|-----------|--------|-----------|
@@ -320,7 +320,7 @@
 
 ![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/EDP/L2_S_EDP.png)
 
-![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Peak%20Power/PPL2s.png)
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Peak%20Power/PPIL2s.png)
 
 
 |Benchmark|L2_S|Energy    |Runtime |EDP        |
@@ -356,7 +356,7 @@
 
 ![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/EDP/LS_EDP.png)
 
-![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Peak%20Power/PPLS.png)
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Peak%20Power/PPILS.png)
 
 
 |Benchmark|LS |Energy    |Runtime |EDP        |
