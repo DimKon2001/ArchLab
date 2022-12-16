@@ -74,7 +74,22 @@
   
 ## Βήμα 2
 * Για το δεύτερο βήμα, χρησιμοποιήσαμε τα αποτελέσματα του gem5 του προηγούμενου εργαστηρίου, όταν είχαμε μεταβάλει τις διάφορες παραμέτρους των cache αναζητώντας μία βελτιστοποίηση για τα 5 Benchmarks: bzip, hmmer, sjeng, mcf και libm. Τα αποτελέσματα αυτά βρίσκονται και στον φάκελο [gem5-results](https://github.com/DimKon2001/ArchLab/tree/main/Lab3/gem5-results).
-**1.** Χρησιμοποιώντας το **_mcpat_**, υπολογίσαμε διάφορα χαρακτηριστικά για τις αρχιτεκτονικές που προέκυψαν από τις αλλαγές στις cache του προηγούμενου εργαστηρίου. Για τον σκοπό αυτό, έγινε χρήση των παρεχόμενων python script: Αρχικά του [GEM5toMcPAT.py](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/bash-py-scripts/GEM5ToMcPAT.py) για την μετατροπή της εξόδου του GEM5 σε κατάλληλη είσοδο για το mcpat και στη συνέχεια του [print_energy.py](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/bash-py-scripts/print_energy.py) για τον υπολογισμό της ενέργειας από τα αποτελέσματα του gem5. Για την αυτοματοποίηση της διαδικασίας δημιουργήθηκαν μερικά [bash scripts](https://github.com/DimKon2001/ArchLab/tree/main/Lab3/bash-py-scripts). Παρακάτω παρατίθενται οι σχετικοί πίνακες με τα αποτελέσματα και κατάλληλα διαγράμματα:
+**1.** Χρησιμοποιώντας το **_mcpat_**, υπολογίσαμε διάφορα χαρακτηριστικά για τις αρχιτεκτονικές που προέκυψαν από τις αλλαγές στις cache του προηγούμενου εργαστηρίου. Για τον σκοπό αυτό, έγινε χρήση των παρεχόμενων python script: Αρχικά του [GEM5toMcPAT.py](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/bash-py-scripts/GEM5ToMcPAT.py) για την μετατροπή της εξόδου του GEM5 σε κατάλληλη είσοδο για το mcpat και στη συνέχεια του [print_energy.py](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/bash-py-scripts/print_energy.py) για τον υπολογισμό της ενέργειας από τα αποτελέσματα του gem5. Για την αυτοματοποίηση της διαδικασίας δημιουργήθηκαν μερικά [bash scripts](https://github.com/DimKon2001/ArchLab/tree/main/Lab3/bash-py-scripts). 
+
+    Ακόμα, κρατήσαμε και το **Peak Power** για κάθε τέτοια      αρχιτεκτονική.
+
+    Τέλος, υπολογίστηκε και το **Energy-Delay-Product (EDP)** ως κριτήριο για την εύρεση της καλύτερης επιλογής. Για τον υπολογισμό αυτόν, πολλαπλασιάσαμε την ενέργεια με το runtime κάθε Benchmark.  
+
+**2.** Παρακάτω παρατίθενται οι σχετικοί πίνακες με τα αποτελέσματα και κατάλληλα διαγράμματα για κάθε περίπτωση:
+
+### Data L1 Cache
+* #### Επίδραση του Associativity 
+
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Energy/DL1_A.png)
+
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/EDP/DL1_A_EDP.png)
+
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Peak%20Power/PPDL1A.png)
 
 |Benchmark|DL1 A|Energy    |Runtime |EDP        |
 |---------|-----|----------|--------|-----------|
@@ -104,6 +119,50 @@
 |mcf      |8    |87.07683  |0.065168|5.674622857|
 |sjeng    |8    |575.537818|0.513663|295.6324822|
 
-![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Energy/DL1_A.png)
+|DL1 A|peak-power|
+|-----|----------|
+|1    | 3.75476  |
+|16   | 4.30168  |
+|2    | 3.75956  |
+|4    | 3.49192  |
+|8    | 3.73583  |
 
-![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/EDP/DL1_A_EDP.png)
+* #### Επίδραση του Size 
+
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Energy/DL1_S.png)
+
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/EDP/DL1_S_EDP.png)
+
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Peak%20Power/PPDL1s.png)
+
+
+|Benchmark|DL1_S|Energy    |Runtime |EDP        |
+|---------|-----|----------|--------|-----------|
+|bzip     |128  |157.127603|0.084084|13.21191737|
+|hmmer    |128  |115.369172|0.059309|6.842430222|
+|libm     |128  |294.614908|0.174772|51.4904367 |
+|mcf      |128  |121.040241|0.065166|7.887708345|
+|sjeng    |128  |833.04127 |0.513664|427.9033109|
+|bzip     |16   |77.424942 |0.088595|6.859462736|
+|hmmer    |16   |53.281168 |0.059681|3.179873387|
+|libm     |16   |147.421276|0.174782|25.76658546|
+|mcf      |16   |59.909077 |0.067506|4.044222152|
+|sjeng    |16   |424.861874|0.513655|218.2324259|
+|bzip     |32   |76.610228 |0.086884|6.65620305 |
+|hmmer    |32   |53.767736 |0.059567|3.20278273 |
+|libm     |32   |148.868102|0.174775|26.01842253|
+|mcf      |32   |58.65147  |0.065222|3.825366176|
+|sjeng    |32   |428.816428|0.513661|220.2662752|
+|bzip     |64   |127.427582|0.085526|10.89837138|
+|hmmer    |64   |92.26248  |0.059396|5.480022262|
+|libm     |64   |237.012853|0.174772|41.42321034|
+|mcf      |64   |97.07446  |0.065187|6.327992824|
+|sjeng    |64   |670.463018|0.513664|344.3927157|
+
+
+|DL1_S|peak-power|
+|-----|----------|
+|128  | 4.25655  |
+|16   | 2.86208  |
+|32   | 2.87755  |
+|64   | 3.75956  |
