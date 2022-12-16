@@ -105,3 +105,5 @@
 |sjeng    |8    |575.537818|0.513663|295.6324822|
 
 ![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Energy/DL1_A.png)
+
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/EPD/DL1_A_EPD.png)
