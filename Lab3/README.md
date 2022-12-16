@@ -274,7 +274,7 @@
 
 ![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/EDP/L2_A_EDP.png)
 
-![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Peak%20Power/PPL2   A.png)
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Peak%20Power/PPL2A.png)
 
 |Benchmark|L2_A|Energy     |Runtime |EDP        |
 |---------|----|-----------|--------|-----------|
