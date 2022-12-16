@@ -106,4 +106,4 @@
 
 ![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/Energy/DL1_A.png)
 
-![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/EPD/DL1_A_EPD.png)
+![alt text](https://github.com/DimKon2001/ArchLab/blob/main/Lab3/charts/EDP/DL1_A_EDP.png)
